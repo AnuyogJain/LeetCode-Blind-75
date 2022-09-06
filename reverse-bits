@@ -1,0 +1,23 @@
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        vector<int> temp(32, 0);
+        int i = 31;
+        
+        while (n > 0) {
+            temp[i] = n & 1;
+            i--;
+            n = n >> 1;
+        }
+        
+        int ans = 0;
+        long pos = 1;
+        
+        for (int i = 0; i < 32; i++) {
+            ans += temp[i] * pos;
+            pos = pos << 1;
+        }
+        
+        return ans;
+    }
+};
